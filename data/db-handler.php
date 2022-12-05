@@ -52,7 +52,7 @@ function getHighscore($page = 1)
 
 	$db = new SQLite3('pacman.db');
 	createDataBase($db);
-	$results = $db->query('SELECT name, score FROM highscore WHERE cheater = 0 AND name != "" ORDER BY score DESC LIMIT 10 OFFSET ' . ($page - 1) * 10);
+	$results = $db->query('SELECT name, score FROM highscore WHERE cheater = 0 AND name != "" ORDER BY score DESC' . ($page - 1) * 10);
 	while ($row = $results->fetchArray()) {
 		$tmp["name"] = htmlspecialchars($row['name']);
 		$tmp["score"] = strval($row['score']);
